@@ -27,14 +27,15 @@ namespace alpas { namespace graphics {
 	void Layer::render()
 	{
 		m_Shader->enable();
+
 		m_Renderer->begin();
-
 		for (const Renderable2D* renderable : m_Renderables)
+		{
 			m_Renderer->submit(renderable);
-
+		}
+		
 		m_Renderer->end();
 		m_Renderer->flush();
 	}
-
 	}
 }

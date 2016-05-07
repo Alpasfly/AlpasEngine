@@ -7,6 +7,8 @@
 #include "../maths/maths.h"
 #include "shader.h"
 
+class Renderable2D;
+
 namespace alpas { namespace graphics {
 
 	struct VertexData
@@ -28,6 +30,11 @@ namespace alpas { namespace graphics {
 		{ }
 
 		virtual ~Renderable2D() { }
+
+		virtual void submit(Renderer* renderer) const
+		{
+			renderer->submit(this);
+		}
 
 		inline const maths::vec3& getPosition() const { return m_Position; }
 		inline const maths::vec2& getSize() const { return m_Size; }
