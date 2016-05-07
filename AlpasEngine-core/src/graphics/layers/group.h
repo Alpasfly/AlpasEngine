@@ -10,7 +10,7 @@ namespace alpas { namespace graphics {
 		std::vector<Renderable2D*> m_Renderables;
 		maths::mat4 m_TransformationMatrix;
 	public:
-		Group(int i);
+		Group();
 
 	};
 	}
