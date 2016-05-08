@@ -4,10 +4,10 @@
 #include "buffers\indexbuffer.h"
 #include "buffers\vertexarray.h"
 
+#include "renderer2d.h"
+
 #include "../maths/maths.h"
 #include "shader.h"
-
-class Renderable2D;
 
 namespace alpas { namespace graphics {
 
@@ -24,6 +24,8 @@ namespace alpas { namespace graphics {
 		maths::vec2 m_Size;
 		maths::vec3 m_Position;
 		maths::vec4 m_Color;
+	protected:
+		Renderable2D() { }
 	public:
 		Renderable2D(maths::vec3 position, maths::vec2 size, maths::vec4 color)
 			: m_Position(position), m_Size(size), m_Color(color)
@@ -31,7 +33,7 @@ namespace alpas { namespace graphics {
 
 		virtual ~Renderable2D() { }
 
-		virtual void submit(Renderer* renderer) const
+		virtual void submit(Renderer2D* renderer) const
 		{
 			renderer->submit(this);
 		}

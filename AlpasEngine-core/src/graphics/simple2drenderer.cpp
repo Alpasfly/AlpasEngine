@@ -1,4 +1,5 @@
 #include "simple2drenderer.h"
+#include "renderable2d.h"
 
 namespace alpas { namespace graphics {
 	void Simple2DRenderer::submit(const Renderable2D* renderable) 
