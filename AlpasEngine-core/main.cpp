@@ -49,6 +49,14 @@ int main()
 		}
 	}
 	
+	glActiveTexture(GL_TEXTURE);
+	Texture texture("test.png");
+	texture.bind();
+
+	shader.enable();
+	shader.setUniform1i("tex", 0);
+	shader.setUniformMat4("pr_matrix", maths::mat4::orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
+
 	Timer time;
 	float timer = 0;
 	unsigned int frames = 0;
