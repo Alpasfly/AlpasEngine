@@ -13,9 +13,10 @@ in DATA
 	vec4 color;
 } fs_in;
 
+uniform sampler2D tex;
+
 void main()
 {
 	float intensity = 1.0 / length(fs_in.position.xy - light_pos);
-	// color = colour * intensity;
-	color = fs_in.color* intensity;
+	color = fs_in.color * intensity;
 }
