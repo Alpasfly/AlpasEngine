@@ -2,7 +2,9 @@
 
 namespace alpas { namespace graphics 
 {
-	Shader::Shader(const char* vertPath, const char* fragPAth) : m_VertPath(vertPath), m_FragPath(fragPAth) {
+	Shader::Shader(const char* vertPath, const char* fragPAth) 
+		: m_VertPath(vertPath), m_FragPath(fragPAth) 
+	{
 		m_ShaderID = load();
 	}
 
@@ -80,6 +82,16 @@ namespace alpas { namespace graphics
 	void Shader::setUniform1f(const GLchar* name, const float value) 
 	{
 		glUniform1f(getUniformLocation(name), value);
+	}
+
+	void Shader::setUniform1fv(const GLchar* name, float* value, int count)
+	{
+		glUniform1fv(getUniformLocation(name), count, value);
+	}
+
+	void Shader::setUniform1iv(const GLchar* name, int* value, int count)
+	{
+		glUniform1iv(getUniformLocation(name), count, value);
 	}
 
 	void Shader::setUniform1i(const GLchar* name, const int value) 
