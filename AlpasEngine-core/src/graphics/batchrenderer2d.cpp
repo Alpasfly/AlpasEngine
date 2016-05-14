@@ -28,10 +28,11 @@ namespace alpas { namespace graphics {
 		glEnableVertexAttribArray(SHADER_TID_INDEX);
 		glEnableVertexAttribArray(SHADER_COLOR_INDEX);
 
-		glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*) 0);
-		glVertexAttribPointer(SHADER_UV_INDEX, 2, GL_FLOAT, GL_TRUE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::uv)));
-		glVertexAttribPointer(SHADER_TID_INDEX, 1, GL_FLOAT, GL_TRUE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::tid)));
-		glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::color)));
+		//TODO: check if these params are correct3
+		glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT,         GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*) 0);
+		glVertexAttribPointer(SHADER_UV_INDEX,	   2, GL_FLOAT,         GL_TRUE,  RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::uv)));
+		glVertexAttribPointer(SHADER_TID_INDEX,	   1, GL_FLOAT,         GL_TRUE,  RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::tid)));
+		glVertexAttribPointer(SHADER_COLOR_INDEX,  4, GL_UNSIGNED_BYTE, GL_TRUE,  RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::color)));
 		
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -147,7 +148,7 @@ namespace alpas { namespace graphics {
 	{
 		for (int i = 0; i < m_TextureSlots.size(); i++)
 		{
-			glActiveTexture(GL_TEXTURE + i);
+			glActiveTexture(GL_TEXTURE0 + i);
 			glBindTexture(GL_TEXTURE_2D, m_TextureSlots[i]);
 		}
 
