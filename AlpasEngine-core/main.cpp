@@ -39,17 +39,22 @@ int main()
 
 	TileLayer layer(&shader);
 
-	Texture* ta = new Texture("test.png");
-	Texture* tb = new Texture("b.png");
+	//TODO: there seems to be something wrong with the red and blue color from the textures.
+	Texture* textures[] = 
+	{
+		new Texture("r.png"),
+		new Texture("g.png"),
+		new Texture("b.png")
+	};
+
 	for (float y = -9.0f; y < 9.0f; y++)
 	{
 		for (float x = -16.0f; x < 16.0f; x++)
 		{
-			layer.add(new Sprite(x, y, 0.9f, 0.9f, rand() % 2 == 0 ? ta : tb));
+			layer.add(new Sprite(x, y, 0.9f, 0.9f, textures[rand() % 3]));
 		}
 	}
 	
-
 	GLint texIDs[] =
 	{
 		0, 1, 2, 3, 4, 5, 6, 7, 8, 9
@@ -85,8 +90,7 @@ int main()
 		}
 	}
 	
-	delete ta;
-	delete tb;
+	delete[] textures;
 
 	return 0;
 }

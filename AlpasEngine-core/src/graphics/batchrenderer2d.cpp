@@ -29,10 +29,10 @@ namespace alpas { namespace graphics {
 		glEnableVertexAttribArray(SHADER_COLOR_INDEX);
 
 		//TODO: check if these params are correct3
-		glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT,         GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*) 0);
-		glVertexAttribPointer(SHADER_UV_INDEX,	   2, GL_FLOAT,         GL_TRUE,  RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::uv)));
-		glVertexAttribPointer(SHADER_TID_INDEX,	   1, GL_FLOAT,         GL_TRUE,  RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::tid)));
-		glVertexAttribPointer(SHADER_COLOR_INDEX,  4, GL_UNSIGNED_BYTE, GL_TRUE,  RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::color)));
+		glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT,         GL_FALSE, RENDERER_VERTEX_SIZE,  (const GLvoid*) 0);
+		glVertexAttribPointer(SHADER_UV_INDEX,	   2, GL_FLOAT,         GL_TRUE,  RENDERER_VERTEX_SIZE,  (const GLvoid*)(offsetof(VertexData, VertexData::uv)));
+		glVertexAttribPointer(SHADER_TID_INDEX,	   1, GL_FLOAT,         GL_FALSE,  RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::tid)));
+		glVertexAttribPointer(SHADER_COLOR_INDEX,  4, GL_UNSIGNED_BYTE, GL_TRUE,  RENDERER_VERTEX_SIZE,  (const GLvoid*)(offsetof(VertexData, VertexData::color)));
 		
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -72,8 +72,8 @@ namespace alpas { namespace graphics {
 		const GLuint tid = renderable->getTID();
 
 		unsigned int c = 0;
-
 		float ts = 0.0f;
+
 		if (tid > 0)
 		{
 			bool found = false;
@@ -97,7 +97,7 @@ namespace alpas { namespace graphics {
 					begin();
 				}
 				m_TextureSlots.push_back(tid);
-				ts = (float)(m_TextureSlots.size() + 1);
+				ts = (float)(m_TextureSlots.size());
 			}
 		}
 		else
